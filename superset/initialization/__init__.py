@@ -54,6 +54,9 @@ from superset.superset_typing import FlaskResponse
 from superset.tags.core import register_sqla_event_listeners
 from superset.utils.core import pessimistic_connection_handling
 from superset.utils.log import DBEventLogger, get_event_logger_from_cfg_value
+from shillelagh.adapters.registry import registry as sh_reg
+from superset.initialization.jsonplaceholderadapter import JsonPlaceHolderAPI
+from sqlalchemy.dialects import registry as sq_reg
 
 if TYPE_CHECKING:
     from superset.app import SupersetApp
@@ -87,6 +90,8 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         """
         Called after any other init tasks
         """
+        sh_reg.add('jsonplaceholderapi', JsonPlaceHolderAPI) # To include our custom adapter(jsonplaceholderapi)
+        sq_reg.register("jsonplaceholderapi", "superset.initialization.jsonplaceholderdialect", "JsonPlaceHolderDialect") # Register new dialect
 
     def configure_celery(self) -> None:
         celery_app.config_from_object(self.config["CELERY_CONFIG"])
