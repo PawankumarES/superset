@@ -349,7 +349,7 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         )
         appbuilder.add_link(
             "SQL Editor",
-            label=_("SQL Lab"),
+            label=__("SQL Lab"),
             href="/superset/sqllab/",
             category_icon="fa-flask",
             icon="fa-flask",
@@ -357,7 +357,8 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
             category_label=__("SQL"),
         )
         appbuilder.add_link(
-            __("Saved Queries"),
+            "Saved Queries",
+            label=__("Saved Queries"),
             href="/savedqueryview/list/",
             icon="fa-save",
             category="SQL Lab",
@@ -365,7 +366,7 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         )
         appbuilder.add_link(
             "Query Search",
-            label=_("Query History"),
+            label=__("Query History"),
             href="/superset/sqllab/history/",
             icon="fa-search",
             category_icon="fa-flask",
@@ -404,7 +405,7 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         appbuilder.add_view(
             AnnotationLayerView,
             "Annotation Layers",
-            label=_("Annotation Layers"),
+            label=__("Annotation Layers"),
             href="/annotationlayer/list/",
             icon="fa-comment",
             category_icon="",
