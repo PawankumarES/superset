@@ -95,8 +95,6 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         # sq_reg.register("jsonplaceholderapi", "superset.initialization.jsonplaceholderdialect", "JsonPlaceHolderDialect") # Register new dialect
         sh_reg.add('everstageapi', EverstageAPI)
         sq_reg.register("everstageapi", "superset.initialization.everstageapidialect", "EverstageAPIDialect")
-        # sh_reg.add('jsonplaceholderapi', JsonPlaceHolderAPI) # To include our custom adapter(jsonplaceholderapi)
-        # sq_reg.register("jsonplaceholderapi", "superset.initialization.jsonplaceholderdialect", "JsonPlaceHolderDialect") # Register new dialect
 
     def configure_celery(self) -> None:
         celery_app.config_from_object(self.config["CELERY_CONFIG"])
